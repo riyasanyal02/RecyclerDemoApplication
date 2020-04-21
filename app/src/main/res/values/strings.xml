@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AltimetrikProject</string>
+
+    <string name="msg_loading">Loading...</string>
+    <string name="alert_dialog_retry">OK</string>
+    <string name="alert_dialog_cancel">CANCEL</string>
+    <string name="DIALOG_ALERT">DialogAlert</string>
+    <string name="LIST">SEARCH</string>
+
+    <string name="dialog_msg_something_went_wrong">Something went wrong. Please retry again</string>
+    <string name="DIALOG_CONFIRM">DialogConfirm</string>
+    <string name="dialog_title_network_error">No Internet</string>
+    <string name="dialog_msg_no_network">Please check your internet connection</string>
+
+
+</resources>
