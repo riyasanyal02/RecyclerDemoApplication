@@ -78,7 +78,6 @@ public class DisplayListActivity extends BaseActivity implements IinformationAct
             });
         }
 
-        initializePresenter();
 
     }
 
@@ -192,6 +191,8 @@ public class DisplayListActivity extends BaseActivity implements IinformationAct
                 super.onPostExecute(aVoid);
                 setProgressDialog(false);
                 if (Utils.response_code == 200) {
+                    initializePresenter();
+
                     adapter = new CustomAdapter(detailsArrayList, DisplayListActivity.this);
 
                     recyclerView.setAdapter(adapter);
@@ -217,12 +218,15 @@ public class DisplayListActivity extends BaseActivity implements IinformationAct
 
     @Override
     public void setList(List<Details> detailList) {
-
-        int i = 0;
-        while (i < 10) {
-            detailsArrayList.add(new Details(detailList.get(i).getmTitle(), detailList.get(i).getmBlurp(), detailList.get(i).getmPleadge(),
-                    detailList.get(i).getmCountry(), detailList.get(i).getmLocation(), detailList.get(i).getmBy()));
-            i++;
+        try {
+            int i = 0;
+            while (i < 10) {
+                detailsArrayList.add(new Details(detailList.get(i).getmTitle(), detailList.get(i).getmBlurp(), detailList.get(i).getmPleadge(),
+                        detailList.get(i).getmCountry(), detailList.get(i).getmLocation(), detailList.get(i).getmBy()));
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         this.detailList = detailList;
@@ -263,13 +267,13 @@ public class DisplayListActivity extends BaseActivity implements IinformationAct
     @Override
     public void onSelected(Details details) {
         Intent intent = new Intent(DisplayListActivity.this, DescriptionActivity.class);
-        intent.putExtra("title",details.getmTitle());
-        intent.putExtra("blurb",details.getmBlurp());
-        intent.putExtra("pleadge",details.getmPleadge());
-        intent.putExtra("country",details.getmCountry());
-        intent.putExtra("location",details.getmLocation());
-        intent.putExtra("by",details.getmBy());
-        intent.putExtra("backers",details.getmBacker());
+        intent.putExtra("title", details.getmTitle());
+        intent.putExtra("blurb", details.getmBlurp());
+        intent.putExtra("pleadge", details.getmPleadge());
+        intent.putExtra("country", details.getmCountry());
+        intent.putExtra("location", details.getmLocation());
+        intent.putExtra("by", details.getmBy());
+        intent.putExtra("backers", details.getmBacker());
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
 
